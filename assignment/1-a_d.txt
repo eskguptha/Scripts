@@ -1,0 +1,54 @@
+a) 
+See the following Python program which contains 3 errors. Errors 
+include statements that might be missing. 
+       import sys 
+       # Reads lines of standard input, adds each line to a list, 
+       # prints the list. 
+       for line in sys.stdin 
+       myList.append( line ) 
+       print myList 
+Correct the 3 errors in this program, and write the corrected version in the 
+space below:
+
+Answer:
+
+import sys
+
+myList = [] # First Error: Initialize the list 
+
+for line in sys.stdin: # Second Error: End with colon
+    myList.append(line) # Third Error: Provide indentation
+
+print myList
+
+########################################################
+
+b) 
+In the following code, 'input' represents what type of Python object? 
+   import sys 
+   import re 
+   input = sys.stdin.readlines() 
+   
+Answer:
+list
+
+c) 
+In the following code, 'input' represents what type of Python object? 
+   import sys 
+   import re
+   input = sys.stdin.read() 
+
+Answer:
+str
+
+d) 
+In the following code, 'ny' represents what type of Python object? 
+   import re 
+   str = "straight" 
+   ny = re.findall('[aeiou]', str)
+   if ( ny ): 
+      print "yes" 
+
+Answer:
+list
+
