@@ -45,3 +45,63 @@ def getAppLogger(name):
 
 glogger = getAppLogger('general')
 apscheduler_logger = getAppLogger('apscheduler')
+
+
+
+# Django Logging
+from datetime import date
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-4s %(levelname)-4s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(process)s %(pathname)s:%(lineno)d %(name)-8s %(levelname)-8s %(message)s'
+        }
+    },
+
+    'handlers': {
+       
+        'db': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename':  os.path.join('logs', 'db_{}.log'.format(date.today().strftime("%Y-%b-%d"))),
+            'formatter': 'file'
+
+        },
+        'web': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename':  os.path.join('logs', 'web_{}.log'.format(date.today().strftime("%Y-%b-%d"))),
+            'formatter': 'file'
+
+        },
+        'api': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename':  os.path.join('logs', 'api_{}.log'.format(date.today().strftime("%Y-%b-%d"))),
+            'formatter': 'file'
+
+        },
+
+    },
+    'loggers': {
+        'db': {
+            'handlers': ['db'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+         'web': {
+            'handlers': ['web'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+         'api': {
+            'handlers': ['api'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
